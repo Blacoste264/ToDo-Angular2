@@ -6,7 +6,6 @@ export class TodoService extends Init {
 
   constructor() { 
     super();
-    console.log('TodoService Initialized');
     this.load();
   }
 
@@ -45,6 +44,4 @@ export class TodoService extends Init {
     // Set new todo
     localStorage.setItem('todos', JSON.stringify(todos))
   }
-  
-
 }

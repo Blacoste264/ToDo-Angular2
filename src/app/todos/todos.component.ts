@@ -1,5 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { TodoService } from '../todo.service';
+import {
+  Component,
+  OnInit
+} from '@angular/core';
+import {
+  TodoService
+} from '../todo.service';
 
 @Component({
   selector: 'app-todos',
@@ -12,45 +17,45 @@ export class TodosComponent implements OnInit {
   appState = 'default';
   oldText;
 
-  constructor(private _todoService: TodoService) { }
+  constructor(private _todoService: TodoService) {}
 
   ngOnInit() {
     this.todos = this._todoService.getTodos();
   }
 
-  addTodo(){
+  addTodo() {
     var newTodo = {
       text: this.text
     }
-    this.todos.push({newTodo});
+    this.todos.push({
+      newTodo
+    });
 
     this._todoService.addTodo(newTodo);
   }
 
-  deleteTodo(todoText){
-    for(var i = 0; i < this.todos.length; i++) {
-      if(this.todos[i].text == todoText) {
+  deleteTodo(todoText) {
+    for (var i = 0; i < this.todos.length; i++) {
+      if (this.todos[i].text == todoText) {
         this.todos.splice(i, 1)
       }
     }
-
     this._todoService.deleteTodo(todoText);
   }
 
-  editTodo(todo){
+  editTodo(todo) {
     this.appState = 'edit';
     this.oldText = todo.text;
     this.text = todo.text;
   }
 
   updateTodo() {
-    for(var i = 0; i < this.todos.length; i++) {
-      if(this.todos[i].text == this.oldText) {
+    for (var i = 0; i < this.todos.length; i++) {
+      if (this.todos[i].text == this.oldText) {
         this.todos[i].text = this.text;
       }
     }
-
     this._todoService.updateTodo(this.oldText, this.text);
-
   }
 }
+

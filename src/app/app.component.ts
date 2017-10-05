@@ -10,5 +10,5 @@ import { TodoService } from './todo.service';
   providers: [TodoService]
 })
 export class AppComponent {
-  title = 'app works!';
+
 }
