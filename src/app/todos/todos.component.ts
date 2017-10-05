@@ -7,13 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TodosComponent implements OnInit {
   todos;
+  text;
 
   constructor() { }
 
   ngOnInit() {
     this.todos = [
       {
-      text: 'Pickup kids from school.'
+        text: 'Pickup kids from school.'
       },
       {
         text: 'Meeting with boss.'
@@ -21,7 +22,22 @@ export class TodosComponent implements OnInit {
       {
         text: 'Code, duh.'
       }
-  ]
+    ]
   }
+
+  addTodo(){
+    this.todos.push({
+      text: this.text
+    });
+  }
+
+  deleteTodo(todoText){
+    for(var i = 0; i < this.todos.length; i++) {
+      if(this.todos[i].text == todoText) {
+        this.todos.splice(i, 1)
+      }
+    }
+  }
+
 
 }
